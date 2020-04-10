@@ -1,18 +1,24 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="text-center">
+    <img
+      class="mx-auto d-block img-fluid mt-5"
+      src="http://www.pngonly.com/wp-content/uploads/2017/06/Music-Headphone-PNG.png"
+      alt="Music"
+    />
+    <img
+      class="mx-auto d-block img-fluid mt-5 w-25"
+      src="https://cdn131.picsart.com/301953567089211.png?r1024x1024"
+      alt="Dance-clipart"
+    />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+export default {};
 </script>
+
+<style scoped>
+/* div {
+  background: #ffc2c4;
+} */
+</style>

@@ -1,12 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <v-app>
+    <header-component></header-component>
+    <v-container fluid>
+      <v-content>
+        <router-view></router-view>
+      </v-content>
+      </v-container>
+    <footer-component></footer-component>
+    </v-app>
   </div>
 </template>
+
+<script>
+import HeaderComponent from './components/shared/Header.vue'
+import FooterComponent from './components/shared/Footer.vue'
+
+export default {
+  name: 'App',
+  data() {
+    return {
+      isAuth: localStorage.getItem('token') !== null
+    }
+  },
+  components: {
+    HeaderComponent,
+    FooterComponent
+  }
+}
+</script>
 
 <style>
 #app {
@@ -15,10 +37,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
 }
 
 #nav a {
