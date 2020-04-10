@@ -1,108 +1,68 @@
 <template>
-<v-container>
-  <form>
-    <v-text-field
-      v-model="email"
-      :error-messages="emailErrors"
-      label="E-mail"
-      required
-      @input="$v.email.$touch()"
-      @blur="$v.email.$touch()">
-      </v-text-field>
-
-        <v-text-field
-      v-model="name"
-      :error-messages="nameErrors"
-      :counter="10"
-      label="Name"
-      required
-      @input="$v.name.$touch()"
-      @blur="$v.name.$touch()">
-      </v-text-field>
-
-    <v-checkbox
-      v-model="checkbox"
-      :error-messages="checkboxErrors"
-      label="Do you agree?"
-      required
-      @change="$v.checkbox.$touch()"
-      @blur="$v.checkbox.$touch()">
-      </v-checkbox>
-
-    <v-btn class="mr-4 white--text" color="#A7BEA9" @click="submit">submit</v-btn>
-  </form>
-  </v-container>
+    <form @submit.prevent="submitHandler">
+          <h1>Registration</h1>
+          <hr />
+          <div class="form-group">
+            <label for="email">Email</label>
+            <v-text-field type="text" id="email" class="form-control" v-model="email" @blur="$v.email.$touch" />
+            <template v-if="$v.email.$error">
+                <small v-if="!$v.email.required" class="text-danger">Email is required</small>
+                <small v-else-if="!$v.email.email" class="text-danger">Email is not valid</small>
+            </template>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <v-text-field type="password" id="password" class="form-control" v-model="password" @blur="$v.password.$touch" />
+            <template v-if="$v.password.$error">
+                <small v-if="!$v.password.required" class="text-danger">Password is required</small>
+                <small v-else-if="!$v.password.minLength" class="text-danger">Password is min 4 symbols</small>
+            </template>
+          </div>
+    </form>
 </template>
 
 <script>
-  import { validationMixin } from 'vuelidate'
-  import { required, maxLength, email } from 'vuelidate/lib/validators'
+import authMixin from "../../mixins/auth-mixin";
+import { validationMixin } from "vuelidate";
+import { required, minLength, maxLength, email } from "vuelidate/lib/validators";
 
-  export default {
-    mixins: [validationMixin],
-
-    validations: {
-      name: { required, maxLength: maxLength(10) },
-      email: { required, email },
+export default {
+  mixins: [authMixin, validationMixin],
+  name: 'Signin',
+    data() {
+        return {
+            username: '',
+            email: '',
+            pass: '',
+            rePass: '',
+        show1: true,
+        show2: true,
+        show3: false,
+        show4: false,
+        text: 'Username',
+        password: 'Password',
+        }
     },
-
-    data: () => ({
-      name: '',
-      email: '',
-      select: null,
-      items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4',
-      ],
-      checkbox: false,
-    }),
-
-    computed: {
-      checkboxErrors () {
-        const errors = []
-        if (!this.$v.checkbox.$dirty) return errors
-        !this.$v.checkbox.checked && errors.push('You must agree to continue!')
-        return errors
-      },
-      selectErrors () {
-        const errors = []
-        if (!this.$v.select.$dirty) return errors
-        !this.$v.select.required && errors.push('Item is required')
-        return errors
-      },
-      nameErrors () {
-        const errors = []
-        if (!this.$v.name.$dirty) return errors
-        !this.$v.name.maxLength && errors.push('Name must be at most 10 characters long')
-        !this.$v.name.required && errors.push('Name is required.')
-        return errors
-      },
-      emailErrors () {
-        const errors = []
-        if (!this.$v.email.$dirty) return errors
-        !this.$v.email.email && errors.push('Must be valid e-mail')
-        !this.$v.email.required && errors.push('E-mail is required')
-        return errors
-      },
-    },
-
-    methods: {
-      submit () {
-        this.$v.$touch()
-      },
-      clear () {
-        this.$v.$reset()
-        this.name = ''
-        this.email = ''
-        this.select = null
-        this.checkbox = false
-      },
-    },
-  }
+  validations: {
+            username: {
+            required,
+            minLength: minLength(4),
+            maxLength: maxLength(20)
+        },
+        email: {
+            required,
+            email
+        },
+        password: {
+            required,
+            minLength: minLength(6),
+            maxLength: maxLength(20)
+        }
+  },
+  methods: {
+ 
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -23,6 +23,7 @@
 
 <script>
   export default {
+      name: 'Header',
     data () {
       return {
         activeBtn: 1,
