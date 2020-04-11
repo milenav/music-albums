@@ -2,8 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from '../views/Home.vue'
-import Signin from '../components/auth/Signin.vue'
-import SignUp from '../components/auth/SignUp.vue'
+import Login from '../components/auth/Login.vue'
+import Register from '../components/auth/Register.vue'
 import NotFound from '../components/shared/NotFound.vue'
 
 
@@ -12,22 +12,18 @@ Vue.use(VueRouter)
   const routes = [
   {
     path: '/',
-    name: 'Home',
     component: Home
   },
   {
-    path: '/sign-in',
-    name: 'Signin',
-    component: Signin
+    path: '/login',
+    component: Login
   },
   {
-    path: '/sign-up',
-    name: 'SignUp',
-    component: SignUp
+    path: '/register',
+    component: Register
   },
   {
     path: '/about',
-    name: 'About',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
