@@ -4,18 +4,26 @@ export default {
     data() {
         return {
             albums: [],
-            album: {},
-            reviews: [],
-            review: {}
+            // album: {},
+            // reviews: [],
+            // review: {}
         }
     },
     methods: {
-        getAllAlbums() {
-            axios
-                .get("/api/albums")
-                .then(response => {
-                    this.albums = response.data;
-                });
+        async getAllAlbums() {
+            try {
+                const response = await axiosDb.get(`albums.json`);
+                const allAlbumsRespone = response.data;
+                for(const albumId in allAlbumsRespone) {
+                    this,albums.push({
+                        albums,
+                        ...allAlbumsRespone[albumId]
+                    });
+                }
+            } 
+              catch(err) {
+                  console.log(err);  
+              }
         }, 
     },
 }

@@ -87,13 +87,7 @@
 <script>
 // import authAxios from "@/axios-auth";
 import { validationMixin } from "vuelidate";
-import {
-  required,
-  minLength,
-  maxLength,
-  sameAs,
-  email
-} from "vuelidate/lib/validators";
+import { required, minLength, maxLength, sameAs, email } from "vuelidate/lib/validators";
 import authMixin from "../../mixins/auth-mixin";
 
 export default {
