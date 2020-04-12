@@ -4,6 +4,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../components/auth/Login.vue'
 import Register from '../components/auth/Register.vue'
+import AlbumList from '../components/albums/AlbumList.vue'
+import AlbumDetails from '../components/albums/AlbumDetails.vue'
 import NotFound from '../components/shared/NotFound.vue'
 
 
@@ -21,6 +23,14 @@ Vue.use(VueRouter)
   {
     path: '/register',
     component: Register
+  },
+  {
+    path: '/albums',
+    component: AlbumList
+  },
+  {
+    path: '/albums/:id',
+    component: AlbumDetails
   },
   {
     path: '/about',

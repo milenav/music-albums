@@ -30,7 +30,7 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
 </router-link>
-<router-link to="/register">
+<router-link v-if="!isAuth" to="/register">
           <v-list-item>
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
@@ -38,12 +38,28 @@
             <v-list-item-title>Register</v-list-item-title>
           </v-list-item>
 </router-link>
-<router-link to="/login">
+<router-link v-if="!isAuth" to="/login">
           <v-list-item>
             <v-list-item-icon>
               <v-icon>mdi-account-check</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Login</v-list-item-title>
+          </v-list-item>
+</router-link>
+<router-link v-if="isAuth" to="/albums">
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-headphones</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Albums</v-list-item-title>
+          </v-list-item>
+</router-link>
+<router-link to="/albums/:id">
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-account-check</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Details</v-list-item-title>
           </v-list-item>
 </router-link>
         </v-list-item-group>
@@ -55,9 +71,11 @@
 <script>
   export default {
       name: 'Header',
+      props: {
+        isAuth: Boolean
+      },
     data () {
       return {
-        
       drawer: false,
       group: ''
       }

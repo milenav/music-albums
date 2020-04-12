@@ -1,5 +1,7 @@
 <template>
-  <div class="text-center">
+<div>
+<div v-if="isAuth">hello</div>
+  <div class="text-center" v-else>
     <img
       class="mx-auto d-block img-fluid mt-5"
       src="http://www.pngonly.com/wp-content/uploads/2017/06/Music-Headphone-PNG.png"
@@ -11,10 +13,19 @@
       alt="Dance-clipart"
     />
   </div>
+</div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    isAuth: Boolean
+  },
+  
+      beforeCreate() {
+    this.$emit('onAuth', localStorage.getItem('token') !== null);
+  },
+};
 </script>
 
 <style scoped>
