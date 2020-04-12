@@ -7,6 +7,7 @@ import Register from '../components/auth/Register.vue'
 import AlbumList from '../components/albums/AlbumList.vue'
 import AlbumDetails from '../components/albums/AlbumDetails.vue'
 import AlbumCreate from '../components/albums/AlbumCreate.vue'
+import ReviewCreate from '../components/reviews/ReviewCreate.vue'
 import NotFound from '../components/shared/NotFound.vue'
 
 
@@ -34,14 +35,19 @@ Vue.use(VueRouter)
     name: 'albums'
   },
   {
+    path: '/albums/create',
+    component: AlbumCreate,
+    name: 'create'
+  },
+  {
     path: '/albums/:id',
     component: AlbumDetails,
     name: 'details'
   },
   {
-    path: '/albums/create',
-    component: AlbumCreate,
-    name: 'create'
+    path: '/albums/:id/review',
+    component: ReviewCreate,
+    name: 'review-create'
   },
   {
     path: '/about',

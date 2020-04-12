@@ -49,6 +49,16 @@
               <v-list-item-title>Details</v-list-item-title>
             </v-list-item>
           </router-link>
+
+              <a v-if="isAuth" @click="logout">
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>mdi-account-check</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Logout</v-list-item-title>
+            </v-list-item>
+          </a>
+
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -66,6 +76,15 @@ export default {
       drawer: false,
       group: ""
     };
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('userId');
+
+      this.$emit('onAuth', false);
+      this.$router.push('/');
+    }
   }
 };
 </script>

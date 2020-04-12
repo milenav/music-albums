@@ -9,114 +9,76 @@
         </div> -->
 
         <div class="signin-form">
-          <h2 class="form-title">Add Album</h2>
-          <form class="register-form" @submit.prevent="addAlbum">
+          <h2 class="form-title">Add Review</h2>
+          <form class="register-form" @submit.prevent="addReview">
             <div class="form-group">
-              <label for="Title">
+              <label for="Name">
                 <span>
                   <v-icon>mdi-account</v-icon>
                 </span>
               </label>
               <input
-                v-model="title"
+                v-model="name"
                 type="text"
-                name="title"
-                id="title"
+                name="name"
+                id="name"
                 placeholder="Your Name"
-                @blur="$v.title.$touch"
+                @blur="$v.name.$touch"
               />
 
-              <template v-if="$v.title.$error">
-                <small v-if="!$v.title.required" class="text-danger">Name is required</small>
+              <template v-if="$v.name.$error">
+                <small v-if="!$v.name.required" class="text-danger">Name is required</small>
                 <small
-                  v-else-if="!$v.title.minLength || !$v.title.maxLength"
+                  v-else-if="!$v.name.minLength || !$v.password.maxLength"
                   class="text-danger"
                 >Name should be between 4 and 20 symbols!</small>
               </template>
             </div>
 
             <div class="form-group">
-              <label for="artist">
+              <label for="avatar">
                 <span>
                   <v-icon>mdi-yin-yang</v-icon>
                 </span>
               </label>
               <input
-                v-model="artist"
+                v-model="avatar"
                 type="text"
-                name="artist"
-                id="artist"
+                name="avatar"
+                id="password"
                 placeholder="Your Avatar"
-                @blur="$v.artist.$touch"
+                @blur="$v.avatar.$touch"
               />
-              <template v-if="$v.artist.$error">
-                <small v-if="!$v.artist.required" class="text-danger">Avatar is required</small>
-              </template>
-            </div>
-
-              <div class="form-group">
-              <label for="color">
-                <span>
-                  <v-icon>mdi-yin-yang</v-icon>
-                </span>
-              </label>
-              <input
-                v-model="color"
-                type="text"
-                name="color"
-                id="color"
-                placeholder="Your Avatar"
-                @blur="$v.color.$touch"
-              />
-              <template v-if="$v.color.$error">
-                <small v-if="!$v.color.required" class="text-danger">Avatar is required</small>
-              </template>
-            </div>
-
-                   <div class="form-group">
-              <label for="src">
-                <span>
-                  <v-icon>mdi-yin-yang</v-icon>
-                </span>
-              </label>
-              <input
-                v-model="src"
-                type="text"
-                name="src"
-                id="src"
-                placeholder="Your Avatar"
-                @blur="$v.src.$touch"
-              />
-              <template v-if="$v.src.$error">
-                <small v-if="!$v.src.required" class="text-danger">Avatar is required</small>
+              <template v-if="$v.avatar.$error">
+                <small v-if="!$v.avatar.required" class="text-danger">Avatar is required</small>
               </template>
             </div>
 
      <div class="form-group">
-              <label for="desription">
+              <label for="Coment">
                 <span>
                   <v-icon>mdi-equal-box</v-icon>
                 </span>
               </label>
               <input
-                v-model="desription"
+                v-model="content"
                 type="text"
-                name="desription"
-                id="desription"
+                name="content"
+                id="content"
                 placeholder="Your Coment"
-                @blur="$v.desription.$touch"
+                @blur="$v.content.$touch"
               />
 
-              <template v-if="$v.desription.$error">
-                <small v-if="!$v.desription.required" class="text-danger">Content is required</small>
+              <template v-if="$v.content.$error">
+                <small v-if="!$v.content.required" class="text-danger">Content is required</small>
                 <small
-                  v-else-if="!$v.desription.minLength || !$v.desription.maxLength"
+                  v-else-if="!$v.content.minLength || !$v.content.maxLength"
                   class="text-danger"
                 >Name should be between 10 and 250 symbols!</small>
               </template>
             </div>
 
-            <button class="btn btn-lg btn-block text-white" style="background-color: #42A5F5">Create Album</button>
+            <button class="btn btn-lg btn-block text-white" style="background-color: #42A5F5">Create Review</button>
 
           </form>
         </div>
@@ -131,47 +93,38 @@ import { validationMixin } from "vuelidate";
 import { required, minLength, maxLength } from "vuelidate/lib/validators";
 
 export default {
-    name: 'AlbumCreate',
+    name: 'ReviewCreate',
     mixins: [validationMixin],
     data() {
         return {
-            title: '',
-            artist: '',
-            src: '',
-            color: '',
-            description: '',
+            name: '',
+            avatar: '',
+            content: ''
         }
     },
     validations: {
-        title: {
+        name: {
             required,
             minLength: minLength(4),
             maxLength: maxLength(20)
         },
-        src: {
+        avatar: {
             required
         },
-        artist: {
-          required
-        },
-        color: {
-          required
-        },
-        description: {
+        content: {
             required,
-            minLength: minLength(5),
+            minLength: minLength(10),
             maxLength: maxLength(250)
         }
     },
     methods: {
-        addAlbum() {
+        addReview() {
             const payload = {
-                title: this.title,
-                artist: this.artist,
-                src: this.src,
-                color: this.color,
-                description: this.description,
+                name: this.name,
+                avatar: this.avatar,
+                content: this.content,
                 userId: localStorage.getItem('userId'),
+                albumId: this.$route.params.id,
                 created: new Date()
             }
  console.log(payload);

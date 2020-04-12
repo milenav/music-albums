@@ -35,11 +35,15 @@ export default {
   props: {
     isAuth: Boolean
   },
-  beforeCreate() {
-    this.$emit("onAuth", localStorage.getItem("token") !== null);
-  },
+  // beforeCreate() {
+    
+  // },
   created() {
-    this.getAllAlbums();
+    this.$emit("onAuth", localStorage.getItem("token") !== null);
+    if(this.isAuth) {
+      this.getAllAlbums();
+    }
+    
   }
 };
 </script>
