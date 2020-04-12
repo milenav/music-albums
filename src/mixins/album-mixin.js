@@ -4,7 +4,7 @@ export default {
     data() {
         return {
             albums: [],
-            // album: {},
+            album: {},
             // reviews: [],
             // review: {}
         }
@@ -25,5 +25,11 @@ export default {
                   console.log(err);  
               }
         }, 
+        geAlbumById() {
+            axiosDb.get(`albums/${this.$route.params.id}.json`) 
+            .then(res => {
+                this.album = res.data;
+            })
+        }
     },
 }
