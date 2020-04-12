@@ -7,7 +7,9 @@ import Register from '../components/auth/Register.vue'
 import AlbumList from '../components/albums/AlbumList.vue'
 import AlbumDetails from '../components/albums/AlbumDetails.vue'
 import AlbumCreate from '../components/albums/AlbumCreate.vue'
+
 import ReviewCreate from '../components/reviews/ReviewCreate.vue'
+import ReviewEdit from '../components/reviews/ReviewEdit.vue'
 import NotFound from '../components/shared/NotFound.vue'
 
 
@@ -48,6 +50,11 @@ Vue.use(VueRouter)
     path: '/albums/:id/review',
     component: ReviewCreate,
     name: 'review-create'
+  },
+  {
+    path: '/albums/:albumId/review/:id',
+    component: ReviewEdit,
+    name: 'review-edit'
   },
   {
     path: '/about',

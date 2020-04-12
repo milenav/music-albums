@@ -5,7 +5,7 @@
         v-for="album in albums" :key="album.albumId">
             <v-card 
             class="mx-auto" 
-            max-width="350"
+            max-width="250"
             :color="album.color" 
             dark
             >

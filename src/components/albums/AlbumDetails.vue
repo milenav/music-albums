@@ -39,7 +39,10 @@
           </v-card-actions>
         </v-card>
       </v-col>
-      <review-list :reviews="album.reviews"></review-list>
+
+    </v-row>
+    <v-row>
+          <review-list :reviews="album.reviews"></review-list>    
     </v-row>
   </v-container>
 </template>
