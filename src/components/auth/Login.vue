@@ -1,6 +1,6 @@
 <template>
   <section id="sign-in">
-    <div class="container">
+    <div class="container mt-5">
       <div class="signin-content">
         <div class="signin-image">
           <figure>
@@ -66,19 +66,19 @@
             <span class="social-label">Or login with</span>
             <ul class="socials">
               <li>
-                <a href="#">
+                <router-link to="#">
                   <v-icon>mdi-facebook</v-icon>
-                </a>
+                </router-link>
               </li>
               <li>
-                <a href="#">
+                <router-link to="#">
                   <v-icon>mdi-twitter</v-icon>
-                </a>
+                </router-link>
               </li>
               <li>
-                <a href="#">
+                <router-link to="#">
                   <v-icon>mdi-google</v-icon>
-                </a>
+                </router-link>
               </li>
             </ul>
           </div>

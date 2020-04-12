@@ -1,6 +1,6 @@
 <template>
   <section class="signup">
-    <div class="container">
+    <div class="container mt-5">
       <div class="signup-content">
         <div class="signup-form">
           <h2 class="form-title">Register</h2>

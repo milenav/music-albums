@@ -1,24 +1,55 @@
 <template>
-  <v-bottom-navigation
-    :value="activeBtn"
-    grow
-    color="teal"
-  >
-    <v-btn>
-      <span>Recents</span>
-      <v-icon>mdi-history</v-icon>
-    </v-btn>
+  <div>
+    <v-app-bar
+      color="#FDA5A4"
+      dark
+    >
+      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
-    <v-btn>
-      <span>Favorites</span>
-      <v-icon>mdi-heart</v-icon>
-    </v-btn>
+      <v-toolbar-title>Music Albums</v-toolbar-title>
+    </v-app-bar>
 
-    <v-btn>
-      <span>Nearby</span>
-      <v-icon>mdi-map-marker</v-icon>
-    </v-btn>
-  </v-bottom-navigation>
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="red lighten-3--text text--red lighten-4"
+        >
+        <router-link to="/">
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Home</v-list-item-title>
+          </v-list-item>
+</router-link>
+<router-link to="/register">
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Register</v-list-item-title>
+          </v-list-item>
+</router-link>
+<router-link to="/login">
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-account-check</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Login</v-list-item-title>
+          </v-list-item>
+</router-link>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+  </div>
 </template>
 
 <script>
@@ -26,12 +57,17 @@
       name: 'Header',
     data () {
       return {
-        activeBtn: 1,
+        
+      drawer: false,
+      group: ''
       }
     },
   }
 </script>
 
-<style>
-
+<style scoped>
+ .v-application a {
+  color: #1e1818;
+  text-decoration: none;
+}
 </style>
