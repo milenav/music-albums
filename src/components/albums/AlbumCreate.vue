@@ -22,7 +22,7 @@
                 type="text"
                 name="title"
                 id="title"
-                placeholder="Your Name"
+                placeholder="Title"
                 @blur="$v.title.$touch"
               />
 
@@ -46,7 +46,7 @@
                 type="text"
                 name="artist"
                 id="artist"
-                placeholder="Your Avatar"
+                placeholder="Artist"
                 @blur="$v.artist.$touch"
               />
               <template v-if="$v.artist.$error">
@@ -65,7 +65,7 @@
                 type="text"
                 name="color"
                 id="color"
-                placeholder="Your Avatar"
+                placeholder="Color"
                 @blur="$v.color.$touch"
               />
               <template v-if="$v.color.$error">
@@ -84,7 +84,7 @@
                 type="text"
                 name="src"
                 id="src"
-                placeholder="Your Avatar"
+                placeholder="Image"
                 @blur="$v.src.$touch"
               />
               <template v-if="$v.src.$error">
@@ -92,25 +92,25 @@
               </template>
             </div>
 
-     <div class="form-group">
-              <label for="desription">
+              <div class="form-group">
+              <label for="description">
                 <span>
                   <v-icon>mdi-equal-box</v-icon>
                 </span>
               </label>
               <input
-                v-model="desription"
+                v-model="description"
                 type="text"
-                name="desription"
-                id="desription"
-                placeholder="Your Coment"
-                @blur="$v.desription.$touch"
+                name="description"
+                id="description"
+                placeholder="Description"
+                @blur="$v.description.$touch"
               />
 
-              <template v-if="$v.desription.$error">
-                <small v-if="!$v.desription.required" class="text-danger">Content is required</small>
+              <template v-if="$v.description.$error">
+                <small v-if="!$v.description.required" class="text-danger">Content is required</small>
                 <small
-                  v-else-if="!$v.desription.minLength || !$v.desription.maxLength"
+                  v-else-if="!$v.description.minLength || !$v.description.maxLength"
                   class="text-danger"
                 >Name should be between 10 and 250 symbols!</small>
               </template>
@@ -176,10 +176,10 @@ export default {
             }
  console.log(payload);
  
-            axiosDb.post(`albums/${payload.albumId}/reviews.json`, payload)
+            axiosDb.post(`albums.json`, payload)
            .then(() => {
                
-               this.$router.push(`/albums/${payload.albumId}`);
+               this.$router.push('/');
            })
            .catch(err => {
                console.error(err);
