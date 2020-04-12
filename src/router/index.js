@@ -6,6 +6,7 @@ import Login from '../components/auth/Login.vue'
 import Register from '../components/auth/Register.vue'
 import AlbumList from '../components/albums/AlbumList.vue'
 import AlbumDetails from '../components/albums/AlbumDetails.vue'
+import AlbumCreate from '../components/albums/AlbumCreate.vue'
 import NotFound from '../components/shared/NotFound.vue'
 
 
@@ -14,23 +15,33 @@ Vue.use(VueRouter)
   const routes = [
   {
     path: '/',
-    component: Home
+    component: Home,
+    name: 'home'
   },
   {
     path: '/login',
-    component: Login
+    component: Login,
+    name: 'login'
   },
   {
     path: '/register',
-    component: Register
+    component: Register,
+    name: 'register'
   },
   {
     path: '/albums',
-    component: AlbumList
+    component: AlbumList,
+    name: 'albums'
   },
   {
     path: '/albums/:id',
-    component: AlbumDetails
+    component: AlbumDetails,
+    name: 'details'
+  },
+  {
+    path: '/albums/create',
+    component: AlbumCreate,
+    name: 'create'
   },
   {
     path: '/about',

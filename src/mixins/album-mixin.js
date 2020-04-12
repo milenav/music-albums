@@ -12,12 +12,12 @@ export default {
     methods: {
         async getAllAlbums() {
             try {
-                const response = await axiosDb.get(`albums.json`);
-                const allAlbumsRespone = response.data;
-                for(const albumId in allAlbumsRespone) {
-                    this,albums.push({
-                        albums,
-                        ...allAlbumsRespone[albumId]
+                const res = await axiosDb.get(`albums.json`);
+                const allAlbumsRes = res.data;
+                for(const albumId in allAlbumsRes) {
+                    this.albums.push({
+                        albumId,
+                        ...allAlbumsRes[albumId]
                     });
                 }
             } 

@@ -28,7 +28,7 @@
                 height="250"
                 ></v-img>
                 <v-card-actions>
-                    <router-link :to="{ name: 'item', params: { id: album.id } }">
+                    <router-link :to="{ name: 'details', params: { id: album.albumId } }">
                     <v-btn text color="white">
                         More
                     </v-btn>

@@ -27,13 +27,13 @@ export default {
   components: {
     AlbumListItem
   },
-  props: {
-    isAuth: Boolean
-  },
-  data() {
+    data() {
     return {
       albums: []
     }
+  },
+  props: {
+    isAuth: Boolean
   },
   beforeCreate() {
     this.$emit("onAuth", localStorage.getItem("token") !== null);
