@@ -18,7 +18,7 @@
                 </span>
               </label>
               <input
-                v-model="name"
+                v-model="review.name"
                 type="text"
                 name="name"
                 id="name"
@@ -42,7 +42,7 @@
                 </span>
               </label>
               <input
-                v-model="avatar"
+                v-model="review.avatar"
                 type="text"
                 name="avatar"
                 id="password"
@@ -61,7 +61,7 @@
                 </span>
               </label>
               <input
-                v-model="content"
+                v-model="review.content"
                 type="text"
                 name="content"
                 id="content"
@@ -78,7 +78,7 @@
               </template>
             </div>
 
-            <button class="btn btn-lg btn-block text-white" style="background-color: #42A5F5">Create Review</button>
+            <button class="btn btn-lg btn-block text-white" style="background-color: #42A5F5">Edit Review</button>
 
           </form>
         </div>
@@ -95,13 +95,16 @@ import { required, minLength, maxLength } from "vuelidate/lib/validators";
 export default {
     name: 'ReviewEdit',
     mixins: [validationMixin, reviewMixin],
-    // data() {
-    //     return {
-    //         name: '',
-    //         avatar: '',
-    //         content: ''
-    //     }
-    // },
+    data() {
+        return {
+            name: '',
+            avatar: '',
+            content: '',
+            userId: localStorage.getItem('userId'),
+            albumId: this.$route.params.id,
+            updated: new Date()
+        }
+    },
     validations: {
         name: {
             required,
@@ -117,22 +120,15 @@ export default {
             maxLength: maxLength(250)
         }
     },
-    beforeCreate() {
+    created() {
          this.getReviewById();
 
     },
     methods: {
         editReview() {
-            const payload = {
-                name: this.name,
-                avatar: this.avatar,
-                content: this.content,
-                userId: localStorage.getItem('userId'),
-                albumId: this.$route.params.id,
-                updated: new Date()
-            }
- console.log(payload);
- 
+           
+            this.reviewUpdate();
+ console.log(this.review);
            
         }
     }

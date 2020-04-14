@@ -22,14 +22,6 @@ export default {
                         this.reviews.push(allReviewsRes[id]);
                     }
                }
-    
-                // for(const comentId in allComentsRes) {
-                //     this.coments.push({
-                //         comentId,
-                //         ...allComentsRes[comentId]
-                //     });
-                // }
-                
             } 
               catch(err) {
                   console.log(err);  
@@ -51,7 +43,6 @@ export default {
                 albumId: this.$route.params.id,
                 created: new Date()
             }
- console.log(payload);
  
             await axiosDb.post(`reviews.json`, payload)
            .then(() => {
@@ -61,6 +52,23 @@ export default {
            .catch(err => {
                console.error(err);
            });
-        }
+        },
+        async reviewUpdate() {
+            const payload = {
+                name: this.review.name,
+                avatar: this.review.avatar,
+                content: this.review.content,
+                userId: localStorage.getItem('userId'),
+                albumId: this.$route.params.id,
+                updated: new Date()
+            }
+            await axiosDb.put(`reviews/${this.$route.params.reviewId}.json`, payload) 
+            .then(() => {
+                this.$router.push(`/albums/${this.review.albumId}`);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+        },
     },
 }

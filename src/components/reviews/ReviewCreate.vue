@@ -121,24 +121,7 @@ export default {
     methods: {
         addReview() {
             this.reviewCreate();
-//             const payload = {
-//                 name: this.name,
-//                 avatar: this.avatar,
-//                 content: this.content,
-//                 userId: localStorage.getItem('userId'),
-//                 albumId: this.$route.params.id,
-//                 created: new Date()
-//             }
-//  console.log(payload);
- 
-//             axiosDb.post(`albums/${payload.albumId}/reviews.json`, payload)
-//            .then(() => {
-               
-//                this.$router.push(`/albums/${payload.albumId}`);
-//            })
-//            .catch(err => {
-//                console.error(err);
-//            });
+//  
         }
     }
 }
