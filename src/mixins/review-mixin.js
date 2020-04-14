@@ -59,7 +59,7 @@ export default {
                 avatar: this.review.avatar,
                 content: this.review.content,
                 userId: localStorage.getItem('userId'),
-                albumId: this.$route.params.id,
+                albumId: this.$route.params.albumId,
                 updated: new Date()
             }
             await axiosDb.put(`reviews/${this.$route.params.reviewId}.json`, payload) 

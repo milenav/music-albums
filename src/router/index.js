@@ -52,7 +52,7 @@ Vue.use(VueRouter)
     name: 'review-create'
   },
   {
-    path: '/reviews/edit/:reviewId',
+    path: '/albums/:albumId/review/edit/:reviewId',
     component: ReviewEdit,
     name: 'review-edit'
   },

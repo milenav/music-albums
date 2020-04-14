@@ -44,7 +44,7 @@ export default {
     goToEdit(id) {
       // const id = (Object.keys())[0];
       console.log(this.review.albumId)
-      this.$router.push(`/reviews/edit/${id}`);
+      this.$router.push(`/albums/${this.review.albumId}/review/edit/${id}`);
       // this.$router.push(`/albums/${this.$route.params.id}/review/${id}`)
     },
     goToDetails() {
