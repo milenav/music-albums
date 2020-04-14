@@ -15,7 +15,7 @@ export default {
             try {
                 const res = await axiosDb.get(`reviews.json`);
                 const allReviewsRes = res.data;
-                
+
                for (const id in allReviewsRes) {
                     if (allReviewsRes[id].albumId === this.$route.params.id) {
                         allReviewsRes[id].reviewId = id;
@@ -70,5 +70,16 @@ export default {
                 console.error(err);
             });
         },
+        async reviewDelete() {
+            const deleteId = this.$route.params.reviewId;
+            await axiosDb.delete(`reviews/${deleteId}.json`) 
+            .then(() => {
+                this.reviews.filter(r => r.reviewId !== deleteId)
+                this.$router.push(`/albums/${this.review.albumId}`);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+        }
     },
 }

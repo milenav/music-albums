@@ -1,11 +1,11 @@
 <template>
     <v-row dense>
         <v-col 
-        class="mb-3"
+        class="mt-5"
         v-for="album in albums" :key="album.albumId">
             <v-card 
             class="mx-auto" 
-            max-width="250"
+            max-width="300"
             :color="album.color" 
             dark
             >
@@ -25,7 +25,7 @@
 
                 <v-img 
                 :src="album.src" 
-                height="250"
+                height="350"
                 ></v-img>
                 <v-card-actions>
                     <router-link :to="{ name: 'details', params: { id: album.albumId } }">
