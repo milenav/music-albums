@@ -1,19 +1,19 @@
 <template>
     <div>
          <v-subheader class="mt-5">Review</v-subheader>
-       <review-list-item v-for="(review) in reviews" :key="review" :review="review"></review-list-item>
+       <review-list-item v-for="review in reviews" :key="review.reviewId" :review="review"></review-list-item>
     </div>
 </template>
 
 <script>
-import ReviewListItem from './ReviewListItem.vue'
+import ReviewListItem from '../reviews/ReviewListItem.vue'
 export default {
     components: {
         ReviewListItem
     },
     props: {
         reviews: {
-            type: Object
+            type: Array
         }
     }
 }

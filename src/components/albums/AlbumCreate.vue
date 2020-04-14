@@ -25,7 +25,6 @@
                 placeholder="Title"
                 @blur="$v.title.$touch"
               />
-
               <template v-if="$v.title.$error">
                 <small v-if="!$v.title.required" class="text-danger">Name is required</small>
                 <small
@@ -53,7 +52,6 @@
                 <small v-if="!$v.artist.required" class="text-danger">Avatar is required</small>
               </template>
             </div>
-
               <div class="form-group">
               <label for="color">
                 <span>
@@ -72,7 +70,6 @@
                 <small v-if="!$v.color.required" class="text-danger">Avatar is required</small>
               </template>
             </div>
-
                    <div class="form-group">
               <label for="src">
                 <span>
@@ -91,7 +88,6 @@
                 <small v-if="!$v.src.required" class="text-danger">Avatar is required</small>
               </template>
             </div>
-
               <div class="form-group">
               <label for="description">
                 <span>
@@ -106,7 +102,6 @@
                 placeholder="Description"
                 @blur="$v.description.$touch"
               />
-
               <template v-if="$v.description.$error">
                 <small v-if="!$v.description.required" class="text-danger">Content is required</small>
                 <small
@@ -115,9 +110,7 @@
                 >Name should be between 10 and 250 symbols!</small>
               </template>
             </div>
-
             <button class="btn btn-lg btn-block text-white" style="background-color: #42A5F5">Create Album</button>
-
           </form>
         </div>
       </div>
@@ -126,13 +119,13 @@
 </template>
 
 <script>
-import axiosDb from '../../axios-db';
+import albumMixin from '../../mixins/album-mixin';
 import { validationMixin } from "vuelidate";
 import { required, minLength, maxLength } from "vuelidate/lib/validators";
 
 export default {
     name: 'AlbumCreate',
-    mixins: [validationMixin],
+    mixins: [validationMixin, albumMixin],
     data() {
         return {
             title: '',
@@ -165,25 +158,7 @@ export default {
     },
     methods: {
         addAlbum() {
-            const payload = {
-                title: this.title,
-                artist: this.artist,
-                src: this.src,
-                color: this.color,
-                description: this.description,
-                userId: localStorage.getItem('userId'),
-                created: new Date()
-            }
- console.log(payload);
- 
-            axiosDb.post(`albums.json`, payload)
-           .then(() => {
-               
-               this.$router.push('/');
-           })
-           .catch(err => {
-               console.error(err);
-           });
+          this.albumCreate();
         }
     }
 }

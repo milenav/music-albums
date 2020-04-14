@@ -17,7 +17,7 @@ export default {
                localStorage.setItem('token', idToken);
                localStorage.setItem('userId', localId);
 
-               this.$router.push('/');
+               this.$router.push('/albums');
            })
            .catch(err => {
                console.error(err);
@@ -32,11 +32,18 @@ export default {
                localStorage.setItem('token', idToken);
                localStorage.setItem('userId', localId);
 
-               this.$router.push('/');
+               this.$router.push('/albums');
            })
            .catch(err => {
                console.error(err);
            });
-        }
+        },
+        onLogout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('userId');
+      
+            this.$emit('onAuth', false);
+            this.$router.push('/');
+          }
     },
 }

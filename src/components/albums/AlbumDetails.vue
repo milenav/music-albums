@@ -26,6 +26,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn text color="white" @click="addReview">Add review</v-btn>
+            <!-- <v-btn text color="white" @click="addReview">Add review</v-btn> -->
 
             <v-icon class="mr-3">mdi-plus-circle</v-icon>
 
@@ -42,24 +43,28 @@
 
     </v-row>
     <v-row>
-          <review-list :reviews="album.reviews"></review-list>    
+              <review-list :reviews="reviews"></review-list>
+        <!-- <coment-list></coment-list> -->
+          <!-- <review-list :reviews="album.reviews"></review-list>     -->
     </v-row>
   </v-container>
 </template>
 
 <script>
 import albumMixin from "../../mixins/album-mixin.js";
-import ReviewList from '../reviews/ReviewList.vue';
+import reviewMixin from '../../mixins/review-mixin'
+import ReviewList from '../reviews/ReviewList.vue'
 
 export default {
   name: 'AlbumDetails',
   components: {
       ReviewList
   },
-  mixins: [albumMixin],
+  mixins: [albumMixin, reviewMixin],
   data() {
     return {
-      rating: 0
+      reviews: [],
+      rating: 0,
     };
   },
     methods: {
@@ -69,7 +74,9 @@ export default {
       }
   },
   created() {
-    this.geAlbumById();
+      
+    this.getAlbumById();
+    this.getAllReviews();
   },
 };
 </script>

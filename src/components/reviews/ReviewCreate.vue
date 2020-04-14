@@ -1,3 +1,4 @@
+
 <template>
   <section id="sign-in">
     <div class="container mt-5">
@@ -55,7 +56,7 @@
             </div>
 
      <div class="form-group">
-              <label for="Coment">
+              <label for="Comment">
                 <span>
                   <v-icon>mdi-equal-box</v-icon>
                 </span>
@@ -65,7 +66,7 @@
                 type="text"
                 name="content"
                 id="content"
-                placeholder="Your Coment"
+                placeholder="Your Comment"
                 @blur="$v.content.$touch"
               />
 
@@ -88,13 +89,13 @@
 </template>
 
 <script>
-import axiosDb from '../../axios-db';
+import reviewMixin from '../../mixins/review-mixin'
 import { validationMixin } from "vuelidate";
 import { required, minLength, maxLength } from "vuelidate/lib/validators";
 
 export default {
     name: 'ReviewCreate',
-    mixins: [validationMixin],
+    mixins: [validationMixin, reviewMixin],
     data() {
         return {
             name: '',
@@ -119,24 +120,25 @@ export default {
     },
     methods: {
         addReview() {
-            const payload = {
-                name: this.name,
-                avatar: this.avatar,
-                content: this.content,
-                userId: localStorage.getItem('userId'),
-                albumId: this.$route.params.id,
-                created: new Date()
-            }
- console.log(payload);
+            this.reviewCreate();
+//             const payload = {
+//                 name: this.name,
+//                 avatar: this.avatar,
+//                 content: this.content,
+//                 userId: localStorage.getItem('userId'),
+//                 albumId: this.$route.params.id,
+//                 created: new Date()
+//             }
+//  console.log(payload);
  
-            axiosDb.post(`albums/${payload.albumId}/reviews.json`, payload)
-           .then(() => {
+//             axiosDb.post(`albums/${payload.albumId}/reviews.json`, payload)
+//            .then(() => {
                
-               this.$router.push(`/albums/${payload.albumId}`);
-           })
-           .catch(err => {
-               console.error(err);
-           });
+//                this.$router.push(`/albums/${payload.albumId}`);
+//            })
+//            .catch(err => {
+//                console.error(err);
+//            });
         }
     }
 }

@@ -41,15 +41,14 @@
               <v-list-item-title>Albums</v-list-item-title>
             </v-list-item>
           </router-link>
-          <router-link to="/albums/:id">
+           <router-link v-if="isAuth" to="/albums/create">
             <v-list-item>
               <v-list-item-icon>
-                <v-icon>mdi-account-check</v-icon>
+                <v-icon>mdi-plus-circle</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Details</v-list-item-title>
+              <v-list-item-title>Create</v-list-item-title>
             </v-list-item>
           </router-link>
-
               <a v-if="isAuth" @click="logout">
             <v-list-item>
               <v-list-item-icon>
@@ -66,24 +65,23 @@
 </template>
 
 <script>
+import authMixin from '../../mixins/auth-mixin'
+
 export default {
   name: "Header",
+  mixins: [authMixin],
   props: {
     isAuth: Boolean
   },
   data() {
     return {
       drawer: false,
-      group: ""
+      group: ''
     };
   },
   methods: {
     logout() {
-      localStorage.removeItem('token');
-      localStorage.removeItem('userId');
-
-      this.$emit('onAuth', false);
-      this.$router.push('/');
+      this.onLogout();
     }
   }
 };

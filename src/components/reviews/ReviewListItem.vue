@@ -1,7 +1,8 @@
 <template>
-  <v-col justify="center">
+  <div class="mx-auto">
     <v-row align="center" class="spacer" no-gutters>
-      <v-col cols="12" sm="2" md="1">
+      <v-col cols="12" sm="2" md="1"
+      >
         <v-avatar size="36px">
           <v-img alt="Avatar" :src="review.avatar"></v-img>
         </v-avatar>
@@ -18,14 +19,17 @@
         <span class="grey--text"></span>
       </v-col>
       
-      <v-btn @click="goToEdit" text color="red">Edit review</v-btn>
+      <v-btn @click="goToEdit(review.reviewId)" text color="red">Edit review</v-btn>
+      <!-- <router-link :to="{ name: 'coment-details', params: { comentId: coment.comentId } }">
+      <v-btn @click="goToDetails" text color="red">Details</v-btn>
+      </router-link> -->
     </v-row>
 
     <v-divider></v-divider>
     <v-card-text v-text="review.content"></v-card-text>
     <v-divider class="mb-5"></v-divider>
     
-  </v-col>
+  </div>
 </template>
 
 <script>
@@ -33,15 +37,18 @@
 export default {
   props: {
     review: {
-      type: Object,
-      required: true
+      type: Object
     }
   },
   methods: {
-    goToEdit() {
+    goToEdit(id) {
       // const id = (Object.keys())[0];
-      console.log(this.review)
+      console.log(this.review.albumId)
+      this.$router.push(`/reviews/edit/${id}`);
       // this.$router.push(`/albums/${this.$route.params.id}/review/${id}`)
+    },
+    goToDetails() {
+      console.log(this.review)
     }
   }
 //   filters: {
