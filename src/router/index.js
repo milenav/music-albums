@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from '../views/Home.vue'
+import Home from '../components/shared/Home.vue'
 import Login from '../components/auth/Login.vue'
 import Register from '../components/auth/Register.vue'
 import AlbumList from '../components/albums/AlbumList.vue'
@@ -52,7 +52,7 @@ Vue.use(VueRouter)
     name: 'review-create'
   },
   {
-    path: '/albums/:albumId/review/:id',
+    path: '/reviews/edit/:reviewId',
     component: ReviewEdit,
     name: 'review-edit'
   },
