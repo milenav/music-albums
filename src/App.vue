@@ -2,11 +2,11 @@
   <div id="app">
     <v-app>
     <header-component @onAuth="isAuth = $event" :isAuth="isAuth"></header-component>
-    <v-container fluid>
+    
       <v-content>
         <router-view @onAuth="isAuth = $event" :isAuth="isAuth"></router-view>
       </v-content>
-      </v-container>
+     
     <footer-component></footer-component>
     </v-app>
   </div>

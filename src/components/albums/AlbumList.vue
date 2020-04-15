@@ -1,5 +1,5 @@
 <template>
-      <div v-if="isAuth">
+      <div v-if="isAuth" class="container mt-5">
       <album-list-item :albums="albums"></album-list-item>
     </div>
 </template>

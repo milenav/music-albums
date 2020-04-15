@@ -55,7 +55,7 @@
               </template>
             </div>
 
-            <button class="btn btn-lg btn-block text-white" style="background-color: #42A5F5">Login</button>
+            <button class="btn btn-lg btn-block text-white" style="background-color: #7b9ab9">Login</button>
 
             <p class="text-center mt-3">
               Dont' have an account?

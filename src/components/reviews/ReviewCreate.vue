@@ -79,7 +79,7 @@
               </template>
             </div>
 
-            <button class="btn btn-lg btn-block text-white" style="background-color: #42A5F5">Add Review</button>
+            <button class="btn btn-lg btn-block text-white" style="background-color: #7b9ab9">Add Review</button>
 
           </form>
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="mt-5">
     <v-row dense>
       <v-col cols="12">
         <v-card :color="album.color" max-width="600" class="mx-auto" dark>
@@ -26,17 +26,8 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn text color="white" @click="addReview">Add review</v-btn>
-            <!-- <v-btn text color="white" @click="addReview">Add review</v-btn> -->
 
             <v-icon class="mr-3">mdi-plus-circle</v-icon>
-
-            <!-- <v-btn icon>
-                                <v-icon>mdi-pencil-box</v-icon>
-                            </v-btn>
-                            <v-btn icon>
-                                <v-icon>mdi-delete</v-icon>
-            </v-btn>-->
-            <!-- <button @click="add_review">click me!</button> -->
           </v-card-actions>
         </v-card>
       </v-col>
@@ -44,8 +35,6 @@
     </v-row>
     <v-row>
               <review-list @onDeleteReview="deleteReview($event)" :reviews="reviews"></review-list>
-        <!-- <coment-list></coment-list> -->
-          <!-- <review-list :reviews="album.reviews"></review-list>     -->
     </v-row>
   </v-container>
 </template>
@@ -63,7 +52,6 @@ export default {
   mixins: [albumMixin, reviewMixin],
   data() {
     return {
-      // reviews: [],
       rating: 0,
     };
   },

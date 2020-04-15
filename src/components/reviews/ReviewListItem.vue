@@ -10,6 +10,7 @@
       </v-col>
 
       <v-col class="hidden-xs-only" sm="5" md="3">
+        Author:
         <strong v-text="review.name"></strong>
         <span class="grey--text"></span>
       </v-col>
@@ -22,18 +23,12 @@
       </v-col>
       <v-col>
             <v-spacer></v-spacer>
-      <v-btn @click="goToEdit(review.reviewId)" text color="black">Edit</v-btn>
-          <v-icon color="#75858F">mdi-pencil-box</v-icon>
+      <v-btn @click="goToEdit(review.reviewId)" text color="#7b9ab9">Edit</v-btn>
+          <v-icon color="#7b9ab9">mdi-pencil-box</v-icon>
 
           <v-btn @click="reviewDelete(review)" text color="red lighten-2">Delete</v-btn>
-          <v-icon color="#E57373">mdi-delete</v-icon>
-          
+          <v-icon color="#E57373">mdi-delete</v-icon> 
       </v-col>
-      
-      <!-- <v-btn @click="onDelete"  text color="red">Delete review</v-btn> -->
-      <!-- <router-link :to="{ name: 'coment-details', params: { comentId: coment.comentId } }">
-      <v-btn @click="goToDetails" text color="red">Details</v-btn>
-      </router-link> -->
     </v-row>
 
     <v-divider></v-divider>
@@ -45,12 +40,8 @@
 </template>
 
 <script>
-// import reviewMixin from '../../mixins/review-mixin'
-import moment from 'moment';
-
 export default {
   name: 'ReviewListItem',
-  // mixins: [reviewMixin],
   props: {
     review: {
       type: Object
@@ -58,18 +49,11 @@ export default {
   },
   methods: {
     goToEdit(id) {
-      
       this.$router.push(`/albums/${this.review.albumId}/review/edit/${id}`);
     },
     reviewDelete(deleteReview) {
       this.$emit("onDeleteReview", deleteReview);
-      // this.$router.push(`/albums/${this.review.albumId}/review/delete/${id}`);
     }
-  },
-  filters: {
-      fromNow(value) {
-          return moment(value).fromNow();
-      }
   }
 };
 </script>

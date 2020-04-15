@@ -4,7 +4,7 @@
       <div class="signin-content">
         <div class="signin-image">
           <figure>
-            <img src="../../assets/3D-Music-icon.png" alt="Music" />
+            <img src="../../assets/music.png" alt="Music" />
           </figure>
         </div>
 
@@ -110,7 +110,7 @@
                 >Name should be between 10 and 250 symbols!</small>
               </template>
             </div>
-            <button class="btn btn-lg btn-block text-white" style="background-color: #42A5F5">Create Album</button>
+            <button class="btn btn-lg btn-block text-white" style="background-color: #7b9ab9">Create Album</button>
           </form>
         </div>
       </div>
