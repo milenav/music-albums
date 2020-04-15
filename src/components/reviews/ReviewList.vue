@@ -1,6 +1,6 @@
 <template>
-    <div>
-         <v-subheader class="mt-5">Review</v-subheader>
+    <div class="container">
+         
        <review-list-item v-for="review in reviews" :key="review.reviewId" :review="review"></review-list-item>
     </div>
 </template>

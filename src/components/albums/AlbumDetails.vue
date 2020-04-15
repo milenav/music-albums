@@ -63,7 +63,7 @@ export default {
   mixins: [albumMixin, reviewMixin],
   data() {
     return {
-      reviews: [],
+      // reviews: [],
       rating: 0,
     };
   },
@@ -74,7 +74,7 @@ export default {
       }
   },
   created() {
-      
+    
     this.getAlbumById();
     this.getAllReviews();
   },

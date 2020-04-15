@@ -7,7 +7,7 @@
           <form class="register-form" @submit.prevent="onSignUp">
             <div class="form-group">
               <label for="email">
-                <v-icon>mdi-email</v-icon>
+                <v-icon color="#75858F">mdi-email</v-icon>
               </label>
               <input
                 type="text"
@@ -25,7 +25,7 @@
 
             <div class="form-group">
               <label for="password">
-                <v-icon>mdi-lock</v-icon>
+                <v-icon color="#75858F">mdi-lock</v-icon>
               </label>
               <input
                 type="password"
@@ -46,7 +46,7 @@
 
             <div class="form-group">
               <label for="re-password">
-                <v-icon>mdi-lock-check</v-icon>
+                <v-icon color="#75858F">mdi-lock-check</v-icon>
               </label>
               <input
                 type="password"

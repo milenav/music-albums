@@ -1,5 +1,6 @@
 <template>
-    <v-footer
+<div ></div>
+    <!-- <v-footer
       absolute
       class="font-weight-medium"
       color="#FDA5A4"
@@ -10,7 +11,7 @@
       >
         {{ new Date().getFullYear() }} — <strong>Music albums</strong>
       </v-col>
-    </v-footer>
+    </v-footer> -->
 </template>
 
 <script>

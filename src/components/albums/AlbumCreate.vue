@@ -2,19 +2,19 @@
   <section id="sign-in">
     <div class="container mt-5">
       <div class="signin-content">
-        <!-- <div class="signin-image">
+        <div class="signin-image">
           <figure>
-            <img src="../../assets/Music-Headphone-PNG.png" alt="Music" />
+            <img src="../../assets/3D-Music-icon.png" alt="Music" />
           </figure>
-        </div> -->
+        </div>
 
         <div class="signin-form">
-          <h2 class="form-title">Add Album</h2>
+          <h2 class="form-title">Create Album</h2>
           <form class="register-form" @submit.prevent="addAlbum">
             <div class="form-group">
               <label for="Title">
                 <span>
-                  <v-icon>mdi-account</v-icon>
+                  <v-icon color="#75858F">mdi-account</v-icon>
                 </span>
               </label>
               <input
@@ -37,7 +37,7 @@
             <div class="form-group">
               <label for="artist">
                 <span>
-                  <v-icon>mdi-yin-yang</v-icon>
+                  <v-icon color="#75858F">mdi-yin-yang</v-icon>
                 </span>
               </label>
               <input
@@ -55,7 +55,7 @@
               <div class="form-group">
               <label for="color">
                 <span>
-                  <v-icon>mdi-yin-yang</v-icon>
+                  <v-icon color="#75858F">mdi-format-color-fill</v-icon>
                 </span>
               </label>
               <input
@@ -73,7 +73,7 @@
                    <div class="form-group">
               <label for="src">
                 <span>
-                  <v-icon>mdi-yin-yang</v-icon>
+                  <v-icon color="#75858F">mdi-image</v-icon>
                 </span>
               </label>
               <input
@@ -91,7 +91,7 @@
               <div class="form-group">
               <label for="description">
                 <span>
-                  <v-icon>mdi-equal-box</v-icon>
+                  <v-icon color="#75858F">mdi-equal-box</v-icon>
                 </span>
               </label>
               <input
@@ -348,9 +348,13 @@ body {
 
 .signup-form,
 .signup-image,
-.signin-form,
-.signin-image {
+.signin-form {
   width: 50%;
+  overflow: hidden;
+}
+
+.signin-image {
+  width: 15%;
   overflow: hidden;
 }
 

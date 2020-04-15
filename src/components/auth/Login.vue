@@ -14,7 +14,7 @@
             <div class="form-group">
               <label for="email">
                 <span>
-                  <v-icon>mdi-email</v-icon>
+                  <v-icon color="#75858F">mdi-email</v-icon>
                 </span>
               </label>
               <input
@@ -35,7 +35,7 @@
             <div class="form-group">
               <label for="password">
                 <span>
-                  <v-icon>mdi-lock</v-icon>
+                  <v-icon color="#75858F">mdi-lock</v-icon>
                 </span>
               </label>
               <input

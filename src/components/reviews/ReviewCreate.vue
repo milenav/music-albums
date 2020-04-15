@@ -3,19 +3,19 @@
   <section id="sign-in">
     <div class="container mt-5">
       <div class="signin-content">
-        <!-- <div class="signin-image">
+        <div class="signin-image">
           <figure>
-            <img src="../../assets/Music-Headphone-PNG.png" alt="Music" />
+            <img src="../../assets/comments.png" alt="Music" />
           </figure>
-        </div> -->
+        </div>
 
         <div class="signin-form">
-          <h2 class="form-title">Add Review</h2>
+          <h2 class="form-title">Create Review</h2>
           <form class="register-form" @submit.prevent="addReview">
             <div class="form-group">
               <label for="Name">
                 <span>
-                  <v-icon>mdi-account</v-icon>
+                  <v-icon color="#75858F">mdi-account</v-icon>
                 </span>
               </label>
               <input
@@ -39,7 +39,7 @@
             <div class="form-group">
               <label for="avatar">
                 <span>
-                  <v-icon>mdi-yin-yang</v-icon>
+                  <v-icon color="#75858F">mdi-yin-yang</v-icon>
                 </span>
               </label>
               <input
@@ -58,7 +58,7 @@
      <div class="form-group">
               <label for="Comment">
                 <span>
-                  <v-icon>mdi-equal-box</v-icon>
+                  <v-icon color="#75858F">mdi-equal-box</v-icon>
                 </span>
               </label>
               <input
@@ -79,7 +79,7 @@
               </template>
             </div>
 
-            <button class="btn btn-lg btn-block text-white" style="background-color: #42A5F5">Create Review</button>
+            <button class="btn btn-lg btn-block text-white" style="background-color: #42A5F5">Add Review</button>
 
           </form>
         </div>
@@ -314,6 +314,12 @@ body {
 .signin-form,
 .signin-image {
   width: 50%;
+  overflow: hidden;
+}
+
+
+.signin-image {
+  width: 20%;
   overflow: hidden;
 }
 
