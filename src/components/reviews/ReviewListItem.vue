@@ -25,9 +25,11 @@
       <v-btn @click="goToEdit(review.reviewId)" text color="black">Edit</v-btn>
           <v-icon color="#75858F">mdi-pencil-box</v-icon>
 
-          <v-btn @click="goToEdit(review.reviewId)" text color="red lighten-2">Delete</v-btn>
-          <v-icon color="#E57373">mdi-delete</v-icon>
+          <!-- <v-btn @click="reviewDelete(review.reviewId)" text color="red lighten-2">Delete</v-btn>
+          <v-icon color="#E57373">mdi-delete</v-icon> -->
+          
       </v-col>
+      
       <!-- <v-btn @click="onDelete"  text color="red">Delete review</v-btn> -->
       <!-- <router-link :to="{ name: 'coment-details', params: { comentId: coment.comentId } }">
       <v-btn @click="goToDetails" text color="red">Details</v-btn>
@@ -43,11 +45,12 @@
 </template>
 
 <script>
-//import reviewMixin from '../../mixins/review-mixin'
+// import reviewMixin from '../../mixins/review-mixin'
 import moment from 'moment';
+
 export default {
   name: 'ReviewListItem',
-  //mixins: [reviewMixin],
+  // mixins: [reviewMixin],
   props: {
     review: {
       type: Object
@@ -58,10 +61,7 @@ export default {
       
       this.$router.push(`/albums/${this.review.albumId}/review/edit/${id}`);
     },
-    // onDelete() {
-    //  this.reviewDelete(`${this.$route.params.reviewId}`);
-
-    // }
+    
   },
   filters: {
       fromNow(value) {

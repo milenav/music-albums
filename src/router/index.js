@@ -1,17 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from '../components/shared/Home.vue'
-import Login from '../components/auth/Login.vue'
-import Register from '../components/auth/Register.vue'
-import AlbumList from '../components/albums/AlbumList.vue'
-import AlbumDetails from '../components/albums/AlbumDetails.vue'
-import AlbumCreate from '../components/albums/AlbumCreate.vue'
+import { authGuard, notAuthGuard } from './guards'
 
-import ReviewCreate from '../components/reviews/ReviewCreate.vue'
-import ReviewEdit from '../components/reviews/ReviewEdit.vue'
-import NotFound from '../components/shared/NotFound.vue'
+const Home = () => import('../components/shared/Home.vue')
+const Login = () => import('../components/auth/Login.vue');
+const Register = () => import('../components/auth/Register.vue');
+const AlbumList = () => import('../components/albums/AlbumList.vue');
+const AlbumDetails = () => import('../components/albums/AlbumDetails.vue');
+const AlbumCreate = () => import('../components/albums/AlbumCreate.vue');
 
+const ReviewCreate = () => import('../components/reviews/ReviewCreate.vue');
+const ReviewEdit = () => import('../components/reviews/ReviewEdit.vue');
+const NotFound = () => import('../components/shared/NotFound.vue');
 
 Vue.use(VueRouter)
 
@@ -24,45 +25,45 @@ Vue.use(VueRouter)
   {
     path: '/login',
     component: Login,
-    name: 'login'
+    name: 'login',
+    beforeEnter: authGuard
   },
   {
     path: '/register',
     component: Register,
-    name: 'register'
+    name: 'register',
+    beforeEnter: authGuard
   },
   {
     path: '/albums',
     component: AlbumList,
-    name: 'albums'
+    name: 'albums',
+    beforeEnter: notAuthGuard
   },
   {
     path: '/albums/create',
     component: AlbumCreate,
-    name: 'create'
+    name: 'create',
+    beforeEnter: notAuthGuard
   },
   {
     path: '/albums/:id',
     component: AlbumDetails,
-    name: 'details'
+    name: 'details',
+    beforeEnter: notAuthGuard
   },
   {
     path: '/albums/:id/review',
     component: ReviewCreate,
-    name: 'review-create'
+    name: 'review-create',
+    beforeEnter: notAuthGuard
   },
   {
     path: '/albums/:albumId/review/edit/:reviewId',
     component: ReviewEdit,
-    name: 'review-edit'
+    name: 'review-edit',
+    beforeEnter: notAuthGuard
   },
-  // {
-  //   path: '/about',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // },
   {
     path: '*',
     component: NotFound

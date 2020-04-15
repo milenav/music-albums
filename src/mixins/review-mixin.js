@@ -71,15 +71,11 @@ export default {
             });
         },
         async reviewDelete() {
-            const deleteId = this.$route.params.reviewId;
-            await axiosDb.delete(`reviews/${deleteId}.json`) 
-            .then(() => {
-                this.reviews.filter(r => r.reviewId !== deleteId)
-                this.$router.push(`/albums/${this.review.albumId}`);
+            // const deleteId = this.$route.params.reviewId;
+            await axiosDb.delete(`reviews/${this.$route.params.reviewId}.json`) 
+            .then(res => {
+                this.review = res.data;
             })
-            .catch(err => {
-                console.error(err);
-            });
         }
     },
 }
