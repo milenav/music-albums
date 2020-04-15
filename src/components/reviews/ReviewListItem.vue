@@ -25,8 +25,8 @@
       <v-btn @click="goToEdit(review.reviewId)" text color="black">Edit</v-btn>
           <v-icon color="#75858F">mdi-pencil-box</v-icon>
 
-          <!-- <v-btn @click="reviewDelete(review.reviewId)" text color="red lighten-2">Delete</v-btn>
-          <v-icon color="#E57373">mdi-delete</v-icon> -->
+          <v-btn @click="reviewDelete(review)" text color="red lighten-2">Delete</v-btn>
+          <v-icon color="#E57373">mdi-delete</v-icon>
           
       </v-col>
       
@@ -61,7 +61,10 @@ export default {
       
       this.$router.push(`/albums/${this.review.albumId}/review/edit/${id}`);
     },
-    
+    reviewDelete(deleteReview) {
+      this.$emit("onDeleteReview", deleteReview);
+      // this.$router.push(`/albums/${this.review.albumId}/review/delete/${id}`);
+    }
   },
   filters: {
       fromNow(value) {

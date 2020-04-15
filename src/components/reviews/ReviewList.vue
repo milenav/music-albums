@@ -1,7 +1,7 @@
 <template>
     <div class="container">
          
-       <review-list-item v-for="review in reviews" :key="review.reviewId" :review="review" >
+       <review-list-item v-for="review in reviews" :key="review.reviewId" :review="review" @onDeleteReview="deleteReview($event)" >
            
        </review-list-item>
     </div>
@@ -19,6 +19,11 @@ export default {
             type: Array
         }
     },
-
+    methods: {
+         deleteReview(deleteReview) {
+      this.$emit("onDeleteReview", deleteReview);
+      // this.$router.push(`/albums/${this.review.albumId}/review/delete/${id}`);
+    }
+    }
 }
 </script>

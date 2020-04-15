@@ -70,12 +70,19 @@ export default {
                 console.error(err);
             });
         },
-        async reviewDelete() {
+        async reviewDelete(deleteReview) {
             // const deleteId = this.$route.params.reviewId;
-            await axiosDb.delete(`reviews/${this.$route.params.reviewId}.json`) 
+            await axiosDb.delete(`reviews/${deleteReview.reviewId}.json`) 
             .then(res => {
-                this.review = res.data;
+                if(res) {
+                //    this.$router.push(`/albums`);
+                    this.review = {}; 
+                }
+                
             })
+            .catch(err => {
+                console.error(err);
+            });
         }
     },
 }

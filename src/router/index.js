@@ -12,6 +12,7 @@ const AlbumCreate = () => import('../components/albums/AlbumCreate.vue');
 
 const ReviewCreate = () => import('../components/reviews/ReviewCreate.vue');
 const ReviewEdit = () => import('../components/reviews/ReviewEdit.vue');
+const ReviewDelete = () => import('../components/reviews/ReviewDelete.vue');
 const NotFound = () => import('../components/shared/NotFound.vue');
 
 Vue.use(VueRouter)
@@ -62,6 +63,12 @@ Vue.use(VueRouter)
     path: '/albums/:albumId/review/edit/:reviewId',
     component: ReviewEdit,
     name: 'review-edit',
+    beforeEnter: notAuthGuard
+  },
+  {
+    path: '/albums/:albumId/review/delete/:reviewId',
+    component: ReviewDelete,
+    name: 'review-delete',
     beforeEnter: notAuthGuard
   },
   {

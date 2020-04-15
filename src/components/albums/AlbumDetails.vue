@@ -43,7 +43,7 @@
 
     </v-row>
     <v-row>
-              <review-list :reviews="reviews"></review-list>
+              <review-list @onDeleteReview="deleteReview($event)" :reviews="reviews"></review-list>
         <!-- <coment-list></coment-list> -->
           <!-- <review-list :reviews="album.reviews"></review-list>     -->
     </v-row>
@@ -71,10 +71,19 @@ export default {
       addReview() {
         const id = this.$route.params.id;
         this.$router.push(`/albums/${id}/review`);
-      }
+      },
+      deleteReview(deleteReview) {
+        
+        this.reviewDelete(deleteReview);
+        this.reviews = this.reviews.filter(r => r.reviewId !== deleteReview.reviewId)
+      },
+  },
+  watch: {
+    reviews: function(val) {
+      this.reviews = val;
+    }
   },
   created() {
-    
     this.getAlbumById();
     this.getAllReviews();
   },
