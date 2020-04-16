@@ -2,19 +2,15 @@
   <div id="app">
     <v-app>
     <header-component @onAuth="isAuth = $event" :isAuth="isAuth"></header-component>
-    
       <v-content>
         <router-view @onAuth="isAuth = $event" :isAuth="isAuth"></router-view>
       </v-content>
-     
-    <footer-component></footer-component>
     </v-app>
   </div>
 </template>
 
 <script>
 import HeaderComponent from './components/shared/Header.vue'
-import FooterComponent from './components/shared/Footer.vue'
 
 export default {
   name: 'App',
@@ -24,8 +20,7 @@ export default {
     }
   },
   components: {
-    HeaderComponent,
-    FooterComponent
+    HeaderComponent
   }
 }
 </script>

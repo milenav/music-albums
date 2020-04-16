@@ -81,11 +81,6 @@ section {
   height: 100%;
   min-height: 335px;
   background-color: #FFF;
-  background-image: radial-gradient(center top, circle cover, #FFF, #D6D6D6);
-  background-image: -o-radial-gradient(center top, circle cover, #FFF, #D6D6D6);
-  background-image: -ms-radial-gradient(center top, circle cover, #FFF, #D6D6D6);
-  background-image: -moz-radial-gradient(center top, circle cover, #FFF, #D6D6D6);
-  background-image: -webkit-radial-gradient(center top, circle cover, #FFF, #D6D6D6);
   text-align: center;
 }
 section:before {
@@ -98,25 +93,6 @@ section:before {
   min-height: 335px;
   pointer-events: none;
   opacity: 0.3;
-}
-section #replay {
-  position: absolute;
-  z-index: 9999;
-  bottom: -65px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: inline-block;
-  padding: 10px;
-  background: rgba(240, 240, 240, 0.44);
-  border: 1px solid #BABABA;
-  color: #696969;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 0.6em;
-  -moz-transition: left 6s cubic-bezier(1, 0.01, 1, 0.01);
-  -o-transition: left 6s cubic-bezier(1, 0.01, 1, 0.01);
-  -webkit-transition: left 6s cubic-bezier(1, 0.01, 1, 0.01);
-  transition: left 6s cubic-bezier(1, 0.01, 1, 0.01);
 }
 
 section .quote {

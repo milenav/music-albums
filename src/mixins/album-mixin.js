@@ -4,9 +4,7 @@ export default {
     data() {
         return {
             albums: [],
-            album: {},
-            // reviews: [],
-            // review: {}
+            album: {}
         }
     },
     methods: {
@@ -41,7 +39,7 @@ export default {
                 userId: localStorage.getItem('userId'),
                 created: new Date()
             }
- console.log(payload);
+
             await axiosDb.post(`albums.json`, payload)
             .then(() => {
                 

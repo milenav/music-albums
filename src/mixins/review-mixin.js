@@ -4,10 +4,7 @@ export default {
     data() {
         return {
             reviews: [],
-            review: {},
-            asObject: true
-            // reviews: [],
-            // review: {}
+            review: {}
         }
     },
     methods: {
@@ -27,7 +24,6 @@ export default {
                   console.log(err);  
               }
         }, 
-       
         async getReviewById() {
             await axiosDb.get(`reviews/${this.$route.params.reviewId}.json`) 
             .then(res => {
@@ -47,7 +43,6 @@ export default {
             await axiosDb.post(`reviews.json`, payload)
            .then(() => {
             this.$router.push('/albums');
-            //    this.$router.push(`/albums/${this.$route.params.id}`);
            })
            .catch(err => {
                console.error(err);
@@ -71,11 +66,9 @@ export default {
             });
         },
         async reviewDelete(deleteReview) {
-            // const deleteId = this.$route.params.reviewId;
             await axiosDb.delete(`reviews/${deleteReview.reviewId}.json`) 
             .then(res => {
                 if(res) {
-                //    this.$router.push(`/albums`);
                     this.review = {}; 
                 }
                 

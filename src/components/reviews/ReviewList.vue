@@ -22,7 +22,6 @@ export default {
     methods: {
          deleteReview(deleteReview) {
       this.$emit("onDeleteReview", deleteReview);
-      // this.$router.push(`/albums/${this.review.albumId}/review/delete/${id}`);
     }
     }
 }

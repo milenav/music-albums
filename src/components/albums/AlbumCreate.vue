@@ -86,6 +86,7 @@
               />
               <template v-if="$v.src.$error">
                 <small v-if="!$v.src.required" class="text-danger">Avatar is required</small>
+                <small v-else-if="!$v.src.url" class="text-danger">Url address must begin with 'http'</small>
               </template>
             </div>
               <div class="form-group">
@@ -122,6 +123,9 @@
 import albumMixin from '../../mixins/album-mixin';
 import { validationMixin } from "vuelidate";
 import { required, minLength, maxLength } from "vuelidate/lib/validators";
+import { helpers } from "vuelidate/lib/validators";
+
+const url = helpers.regex("url", /^https:\/+/);
 
 export default {
     name: 'AlbumCreate',
@@ -138,11 +142,12 @@ export default {
     validations: {
         title: {
             required,
-            minLength: minLength(4),
+            minLength: minLength(3),
             maxLength: maxLength(20)
         },
         src: {
-            required
+            required,
+            url
         },
         artist: {
           required
@@ -152,8 +157,8 @@ export default {
         },
         description: {
             required,
-            minLength: minLength(5),
-            maxLength: maxLength(250)
+            minLength: minLength(3),
+            maxLength: maxLength(20)
         }
     },
     methods: {

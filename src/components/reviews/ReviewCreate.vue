@@ -52,6 +52,7 @@
               />
               <template v-if="$v.avatar.$error">
                 <small v-if="!$v.avatar.required" class="text-danger">Avatar is required</small>
+                <small v-else-if="!$v.avatar.url" class="text-danger">Url address must begin with 'http'</small>
               </template>
             </div>
 
@@ -78,9 +79,7 @@
                 >Name should be between 10 and 250 symbols!</small>
               </template>
             </div>
-
             <button class="btn btn-lg btn-block text-white" style="background-color: #7b9ab9">Add Review</button>
-
           </form>
         </div>
       </div>
@@ -92,6 +91,9 @@
 import reviewMixin from '../../mixins/review-mixin'
 import { validationMixin } from "vuelidate";
 import { required, minLength, maxLength } from "vuelidate/lib/validators";
+import { helpers } from "vuelidate/lib/validators";
+
+const url = helpers.regex("url", /^https:\/+/);
 
 export default {
     name: 'ReviewCreate',
@@ -110,7 +112,8 @@ export default {
             maxLength: maxLength(20)
         },
         avatar: {
-            required
+            required,
+            url
         },
         content: {
             required,

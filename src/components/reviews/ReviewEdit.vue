@@ -23,16 +23,7 @@
                 name="name"
                 id="name"
                 placeholder="Your Name"
-                @blur="$v.name.$touch"
               />
-
-              <template v-if="$v.name.$error">
-                <small v-if="!$v.name.required" class="text-danger">Name is required</small>
-                <small
-                  v-else-if="!$v.name.minLength || !$v.password.maxLength"
-                  class="text-danger"
-                >Name should be between 4 and 20 symbols!</small>
-              </template>
             </div>
 
             <div class="form-group">
@@ -47,11 +38,7 @@
                 name="avatar"
                 id="password"
                 placeholder="Your Avatar"
-                @blur="$v.avatar.$touch"
               />
-              <template v-if="$v.avatar.$error">
-                <small v-if="!$v.avatar.required" class="text-danger">Avatar is required</small>
-              </template>
             </div>
 
      <div class="form-group">
@@ -66,16 +53,7 @@
                 name="content"
                 id="content"
                 placeholder="Your Coment"
-                @blur="$v.content.$touch"
               />
-
-              <template v-if="$v.content.$error">
-                <small v-if="!$v.content.required" class="text-danger">Content is required</small>
-                <small
-                  v-else-if="!$v.content.minLength || !$v.content.maxLength"
-                  class="text-danger"
-                >Name should be between 10 and 250 symbols!</small>
-              </template>
             </div>
 
             <button class="btn btn-lg btn-block text-white" style="background-color: #7b9ab9">Add Review</button>
@@ -89,12 +67,10 @@
 
 <script>
 import reviewMixin from '../../mixins/review-mixin'
-import { validationMixin } from "vuelidate";
-import { required, minLength, maxLength } from "vuelidate/lib/validators";
 
 export default {
     name: 'ReviewEdit',
-    mixins: [validationMixin, reviewMixin],
+    mixins: [reviewMixin],
     data() {
         return {
             name: '',
@@ -103,21 +79,6 @@ export default {
             userId: localStorage.getItem('userId'),
             albumId: this.$route.params.id,
             updated: new Date()
-        }
-    },
-    validations: {
-        name: {
-            required,
-            minLength: minLength(4),
-            maxLength: maxLength(20)
-        },
-        avatar: {
-            required
-        },
-        content: {
-            required,
-            minLength: minLength(10),
-            maxLength: maxLength(250)
         }
     },
     created() {
