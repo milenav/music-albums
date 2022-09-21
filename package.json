@@ -16,7 +16,7 @@
     "vue-material": "^1.0.0-beta-11",
     "vue-router": "^3.1.6",
     "vuelidate": "^0.7.5",
-    "vuetify": "^2.2.21"
+    "vuetify": "^2.6.10"
   },
   "devDependencies": {
     "@mdi/font": "^5.0.45",
